@@ -68,14 +68,18 @@ export const TodoItem: React.FC<Props> = ({
         completed: completed,
       })}
     >
-      <input
-        data-cy="TodoStatus"
-        type="checkbox"
-        className="todo__status"
-        checked={completed}
-        onChange={handleStatusChange}
-        disabled={loading}
-      />
+      <label htmlFor={`todo-${id}`} className="todo__status-label">
+        {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
+        <input
+          data-cy="TodoStatus"
+          type="checkbox"
+          className="todo__status"
+          checked={completed}
+          onChange={handleStatusChange}
+          disabled={loading}
+          id={`todo-${id}`}
+        />
+      </label>
 
       {isTodoEditing && selectedPostId === id ? (
         <form onSubmit={handleTitleSubmit}>
